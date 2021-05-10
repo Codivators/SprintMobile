@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myapp.services;
+/* package com.mycompany.myapp.services;
 
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
@@ -12,6 +12,8 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.Task;
+import com.mycompany.myapp.entities.Article;
+
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ import java.util.Map;
  *
  * @author bhk
  */
-public class ServiceTask {
+/* public class ServiceTask {
 
     public ArrayList<Task> tasks;
     
@@ -42,7 +44,7 @@ public class ServiceTask {
     }
 
     public boolean addTask(Task t) {
-        String url = Statics.BASE_URL + "/tasks/" + t.getName() + "/" + t.getStatus(); //création de l'URL
+        String url = Statics.BASE_URL + "/service/addart?title=" + t.getTitle() + "&text=" + t.getText(); //création de l'URL
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -55,7 +57,7 @@ public class ServiceTask {
                 pas l'ActionListener il sera enregistré et donc éxécuté même si 
                 la réponse reçue correspond à une autre URL(get par exemple)*/
                 
-            }
+        /*    }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
@@ -79,7 +81,7 @@ public class ServiceTask {
             En fait c'est la clé de l'objet qui englobe la totalité des objets 
                     c'est la clé définissant le tableau de tâches.
             */
-            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+          //  Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
             
               /* Ici on récupère l'objet contenant notre liste dans une liste 
             d'objets json List<MAP<String,Object>> ou chaque Map est une tâche.               
@@ -92,18 +94,20 @@ public class ServiceTask {
             Pour le cas d'un tableau (Json Array) contenant plusieurs objets
             sa valeur est une liste d'objets Json, donc une liste de Map
             */
-            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
-            
+        /*    List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            int i;
             //Parcourir la liste des tâches Json
             for(Map<String,Object> obj : list){
                 //Création des tâches et récupération de leurs données
-                Task t = new Task();
-                float id = Float.parseFloat(obj.get("id").toString());
-                t.setId((int)id);
-                t.setStatus(((int)Float.parseFloat(obj.get("status").toString())));
-                t.setName(obj.get("name").toString());
+                Article t = new Article();
+               // t.setId(obj.get("id").toString());
+               // t.setTitle(obj.get("title").toString());
+               // t.setText(obj.get("text").toString());
+               // for(i=0;i<obj.get("user").toString()));
+                t.setUserid(Integer.parseInt(obj.get("user").toString()));
+                
                 //Ajouter la tâche extraite de la réponse Json à la liste
-                tasks.add(t);
+               // tasks.add(t);
             }
             
             
@@ -115,11 +119,11 @@ public class ServiceTask {
         de la base de données à travers un service web
         
         */
-        return tasks;
+      /*  return tasks;
     }
     
-    public ArrayList<Task> getAllTasks(){
-        String url = Statics.BASE_URL+"/tasks/";
+    public ArrayList<Task> getAllArticles(){
+        String url = Statics.BASE_URL+"/service/allarticle";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -133,3 +137,4 @@ public class ServiceTask {
         return tasks;
     }
 }
+*/

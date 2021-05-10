@@ -14,8 +14,9 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
-import com.mycompany.myapp.entities.Task;
-import com.mycompany.myapp.services.ServiceTask;
+import com.mycompany.myapp.entities.Article;
+import com.mycompany.myapp.services.ServiceArticle;
+
 
 /**
  *
@@ -29,23 +30,25 @@ public class AddTaskForm extends Form{
         Quelque soit l'interface faisant appel à AddTask, on peut y revenir
         en utilisant le bouton back
         */
-        setTitle("Add a new task");
+        setTitle("Add a new Article");
         setLayout(BoxLayout.y());
         
-        TextField tfName = new TextField("","TaskName");
-        TextField tfStatus= new TextField("", "Status: 0 - 1");
-        Button btnValider = new Button("Add task");
+        TextField tfTitle = new TextField("","Article Name");
+
+        Button btnValider = new Button("Add Article");
         
         btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ((tfName.getText().length()==0)||(tfStatus.getText().length()==0))
+                if ((tfTitle.getText().length()==0))
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 else
                 {
                     try {
-                        Task t = new Task(Integer.parseInt(tfStatus.getText()), tfName.getText());
-                        if( ServiceTask.getInstance().addTask(t))
+                        Article t = new Article();
+                        t.setTitle(tfTitle.getText());
+                       
+                        if( ServiceArticle.getInstance().addArticle(t,15, "2021-05-04"))
                             Dialog.show("Success","Connection accepted",new Command("OK"));
                         else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
@@ -59,7 +62,7 @@ public class AddTaskForm extends Form{
             }
         });
         
-        addAll(tfName,tfStatus,btnValider);
+        addAll(tfTitle,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
                 , e-> previous.showBack()); // Revenir vers l'interface précédente
                 

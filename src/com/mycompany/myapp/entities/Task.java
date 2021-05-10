@@ -5,56 +5,81 @@
  */
 package com.mycompany.myapp.entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author bhk
  */
 public class Task {
-    private int id,status;
-    private String name;
-    
-    public Task(int id, int status, String name) {
-        this.id = id;
-        this.status = status;
-        this.name = name;
+   private int id,userid;
+    private String title,text,texthtml,image;
+    private Date datepub;
+
+    public Date getDatepub() {
+        return datepub;
     }
 
-    public Task(int status, String name) {
-        this.status = status;
-        this.name = name;
+    public void setDatepub(Date datepub) {
+        this.datepub = datepub;
     }
 
-    public Task() {
+    public String getImage() {
+        return image;
     }
 
-    public int getId() {
-        return id;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getTexthtml() {
+        return texthtml;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getStatus() {
-        return status;
+    public void setTexthtml(String texthtml) {
+        this.texthtml = texthtml;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public int getId() {
+        return id;
     }
 
-    public String getName() {
-        return name;
+
+
+    public int getUserid() {
+        return userid;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override
     public String toString() {
-        return "Task{" + "id=" + id + ", status=" + status + ", name=" + name + '}';
+         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+             // + formatter.format(datepub) 
+        return userid + title + "\n";
     }
-    
     
 }
