@@ -22,17 +22,19 @@ public class HomeForm extends Form {
     la méthode showBack*/
     
     public HomeForm() {
-        current = this; //Récupération de l'interface(Form) en cours
+   /*     current = this; //Récupération de l'interface(Form) en cours
         setTitle("Home");
         setLayout(BoxLayout.y());
 
         add(new Label("Choose an option"));
-        Button btnAddTask = new Button("Add Task");
+        Button btnAddTask = new Button("register");
         Button btnListTasks = new Button("List Tasks");
+        Button login = new Button("login");
 
-        btnAddTask.addActionListener(e -> new AddTaskForm(current).show());
-        btnListTasks.addActionListener(e -> new ListTasksForm(current).show());
-        addAll(btnAddTask, btnListTasks);
+        btnAddTask.addActionListener(e -> new registerPage(current).show());
+        btnListTasks.addActionListener(e -> new ListUsersForm(current).show());
+        login.addActionListener(e -> new loginPage(current).show());
+        addAll(btnAddTask, btnListTasks,login);*/
 
     }
 

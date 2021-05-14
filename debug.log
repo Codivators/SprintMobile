@@ -1,0 +1,12 @@
+[0513/002445.031:ERROR:batching_media_log.cc(38)] MediaEvent: {"error":"FFmpegDemuxer: no supported streams"}
+[0513/002445.031:ERROR:batching_media_log.cc(35)] MediaEvent: {"pipeline_error":14}
+[0513/002500.415:ERROR:batching_media_log.cc(38)] MediaEvent: {"error":"FFmpegDemuxer: no supported streams"}
+[0513/002500.415:ERROR:batching_media_log.cc(35)] MediaEvent: {"pipeline_error":14}
+[0513/002658.359:ERROR:batching_media_log.cc(38)] MediaEvent: {"error":"FFmpegDemuxer: no supported streams"}
+[0513/002658.359:ERROR:batching_media_log.cc(35)] MediaEvent: {"pipeline_error":14}
+[0513/002754.653:ERROR:batching_media_log.cc(38)] MediaEvent: {"error":"FFmpegDemuxer: no supported streams"}
+[0513/002754.653:ERROR:batching_media_log.cc(35)] MediaEvent: {"pipeline_error":14}
+[0513/002904.357:ERROR:batching_media_log.cc(38)] MediaEvent: {"error":"FFmpegDemuxer: no supported streams"}
+[0513/002904.357:ERROR:batching_media_log.cc(35)] MediaEvent: {"pipeline_error":14}
+[0513/003044.265:ERROR:batching_media_log.cc(38)] MediaEvent: {"error":"FFmpegDemuxer: no supported streams"}
+[0513/003044.265:ERROR:batching_media_log.cc(35)] MediaEvent: {"pipeline_error":14}
