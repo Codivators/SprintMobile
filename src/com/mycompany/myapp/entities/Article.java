@@ -13,8 +13,17 @@ import java.util.Date;
  */
 public class Article {
     private int id,userid;
-    private String title,text,texthtml,image;
+    private String title,text,texthtml,image, username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
     private Date datepub;
+    
 
     public Date getDatepub() {
         return datepub;

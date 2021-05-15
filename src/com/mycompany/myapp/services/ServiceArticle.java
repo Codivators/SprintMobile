@@ -10,14 +10,15 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.Article;
 import com.mycompany.myapp.entities.User;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -65,7 +66,7 @@ public class ServiceArticle {
         return resultOK;
     }
 
-    public ArrayList<Article> parseArticles(String jsonText) throws ParseException{
+    public ArrayList<Article> parseArticles(String jsonText) throws ParseException, com.codename1.l10n.ParseException{
         try {
             Articles =new ArrayList<>();
             JSONParser j = new JSONParser();// Instanciation d'un objet JSONParser permettant le parsing du résultat json
@@ -97,7 +98,7 @@ public class ServiceArticle {
             sa valeur est une liste d'objets Json, donc une liste de Map
             */
             List<Map<String,Object>> list = (List<Map<String,Object>>)ArticlesListJson.get("root");
-            String aux;
+            String aux, auxd;
             //Parcourir la liste des tâches Json
             for(Map<String,Object> obj : list){
                 //Création des tâches et récupération de leurs données
@@ -106,9 +107,15 @@ public class ServiceArticle {
                 t.setTitle(obj.get("title").toString());
                 t.setText(obj.get("text").toString());
                 t.setTexthtml(obj.get("texthtml").toString());
-                aux = obj.get("user").toString().substring(4, obj.get("user").toString().length()-2);
+                t.setUsername(obj.get("username").toString());
+                aux = obj.get("user").toString().substring(4, obj.get("user").toString().length()-1);
                 t.setUserid((int) Float.parseFloat(aux));
-                t.setDatepub(new SimpleDateFormat("yyyy-MM-dd").parse(obj.get("datepub").toString()) );
+                t.setImage(obj.get("image").toString());
+                auxd = obj.get("datepub").toString().substring(0, obj.get("datepub").toString().length()-15);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = sdf.parse(auxd);
+                System.out.println(auxd);
+                t.setDatepub(date);
                 //Ajouter la tâche extraite de la réponse Json à la liste
                 Articles.add(t);
             }
@@ -137,7 +144,11 @@ public class ServiceArticle {
             public void actionPerformed(NetworkEvent evt) {
                 
                 try {
-                    Articles = parseArticles(new String(req.getResponseData()));
+                    try {
+                        Articles = parseArticles(new String(req.getResponseData()));
+                    } catch (com.codename1.l10n.ParseException ex) {
+                        ex.printStackTrace();
+                    }
                 } catch (ParseException ex) {
                         ex.getMessage();
                 }
@@ -148,6 +159,33 @@ public class ServiceArticle {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return Articles;
     }
+    
+     public ArrayList<Article> getAllArticlesUser(int id){
+        String url = Statics.BASE_URL+"/service/allarticlebyUser/" + id;
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                
+                try {
+                    try {
+                        Articles = parseArticles(new String(req.getResponseData()));
+                    } catch (com.codename1.l10n.ParseException ex) {
+                        ex.printStackTrace();
+                    }
+                } catch (ParseException ex) {
+                        ex.getMessage();
+                }
+                    req.removeResponseListener(this);
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return Articles;
+    }
+    
+    
     
     public boolean deleteArticle(Article t) {
         String url = Statics.BASE_URL + "/deletearticle/" + t.getId() + "&text="; //création de l'URL
