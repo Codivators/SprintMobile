@@ -68,22 +68,27 @@ public class BaseForm extends Form {
 
     protected void addSideMenu(Resources res) {
         Toolbar tb = getToolbar();
-        Image img = res.getImage("profile-background.jpg");
+        Image img = res.getImage("a4.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
         }
         ScaleImageLabel sl = new ScaleImageLabel(img);
         sl.setUIID("BottomPad");
         sl.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
-        
+        Image imgg = res.getImage("u2.png");
+        imgg = imgg.scaledHeight(Display.getInstance().getDisplayHeight() / 10);
         tb.addComponentToSideMenu(LayeredLayout.encloseIn(
                 sl,
                 FlowLayout.encloseCenterBottom(
-                        new Label(res.getImage("profile-pic.jpg"), "PictureWhiteBackgrond"))
+                        new Label(imgg))
         ));
         
-     /*   tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new NewsfeedForm(res).show());
-        tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, e -> new ProfileForm(res).show());
-        tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show()); */
+          
+        tb.addMaterialCommandToSideMenu("Reservation history", FontImage.MATERIAL_ADD_TO_QUEUE, e -> {});
+        tb.addMaterialCommandToSideMenu("Activities", FontImage.MATERIAL_QUEUE, e -> {});
+        tb.addMaterialCommandToSideMenu("Products", FontImage.MATERIAL_SHOP, e -> {});
+        tb.addMaterialCommandToSideMenu("Calendar", FontImage.MATERIAL_CALENDAR_TODAY, e -> {});
+        tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new loginPage(res).show());
+        
     }
 }

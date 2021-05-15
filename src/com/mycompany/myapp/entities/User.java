@@ -7,34 +7,35 @@ package com.mycompany.myapp.entities;
 
 import java.util.Date;
 
-/**
- *
- * @author MSI PC
- */
+
 public class User {
-    private int id,isverified,codeR,codeP;
-
-    public int getCodeR() {
-        return codeR;
-    }
-
-    public void setCodeR(int codeR) {
-        this.codeR = codeR;
-    }
-
-    public int getCodeP() {
-        return codeP;
-    }
-
-    public void setCodeP(int codeP) {
-        this.codeP = codeP;
-    }
+    private int id,isverified,coder,codep;
     private String email,password,firstname,lastname,suspension,raisonsuspension,image,nomuser;
     private Date dater;
-    private String [] roles = new String[1];
+    private String roles ;
     private String roleuser;
     private String confirmpassword;
 
+    
+    public int getCoder() {
+        return coder;
+    }
+
+    public void setCoder(int coder) {
+        this.coder = coder;
+    }
+
+    public int getCodep() {
+        return codep;
+    }
+
+    public void setCodep(int codep) {
+        this.codep = codep;
+    }
+
+   
+ 
+   
     public String getConfirmpassword() {
         return confirmpassword;
     }
@@ -142,19 +143,21 @@ public class User {
     }
 
     public String getRoles() {
-        return roles[0];
+        return roles;
     }
 
     public void setRoles(String roles) {
-        this.roles[0]= roles;
+        this.roles= roles;
         
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", isverified=" + isverified + ", email=" + email + ", password=" + password + ", firstname=" + firstname + ", lastname=" + lastname + ", suspension=" + suspension + ", raisonsuspension=" + raisonsuspension + ", image=" + image + ", nomuser=" + nomuser + ", dater=" + dater + ", roles=" + roles + ", roleuser=" + roleuser + '}';
+        return "User{" + "id=" + id + ", coder=" + coder + ", codep=" + codep + ", email=" + email + ", password=" + password + ", suspension=" + suspension + ", raisonsuspension=" + raisonsuspension + ", image=" + image + ", nomuser=" + nomuser + ", roles=" + roles + '}';
     }
 
-    
-    
+   
+   
+   
+   
 }
