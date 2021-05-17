@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="GUI 1" cloudDestinationProperty="GUI 1" layout="BoxLayout" boxLayoutAxis="Y" title="Details" >
+  <component type="Container" name="Container" cloudDestinationProperty="Container" layout="TableLayout" tableLayoutRows="6" tableLayoutColumns="2" >
+    <component type="Label" name="Label" cloudDestinationProperty="Label" text="First Name" >
+    </component>
+    <component type="TextField" name="firstName" cloudBoundProperty="text" cloudDestinationProperty="firstName" text="" >
+    </component>
+    <component type="Label" name="Label1" cloudDestinationProperty="Label1" text="Surname" >
+    </component>
+    <component type="TextField" name="surname" cloudBoundProperty="text" cloudDestinationProperty="surname" text="" >
+    </component>
+    <component type="Label" name="Label2" cloudDestinationProperty="Label2" text="Occupation" >
+    </component>
+    <component type="ComboBox" name="occupation" cloudDestinationProperty="occupation" >
+      <stringItem value="Programmer" />
+      <stringItem value="Construction Worker" />
+      <stringItem value="Some other job? Seriously?" />
+      <stringItem value="Drawing blanks here..." />
+    </component>
+    <component type="Label" name="Label3" cloudDestinationProperty="Label3" text="Gender" >
+    </component>
+    <component type="Container" name="Container2" cloudDestinationProperty="Container2" >
+      <component type="RadioButton" name="male" cloudDestinationProperty="male" text="Male" group="genderRadio" >
+      </component>
+      <component type="RadioButton" name="female" cloudDestinationProperty="female" text="Female" group="genderRadio" >
+      </component>
+    </component>
+    <component type="Label" name="Label4" cloudDestinationProperty="Label4" text="Abilities" >
+      <layoutConstraint row="-1" column="-1" height="-1" width="-1" align="-1" spanHorizontal="1" valign="0" spanVertical="1" />
+    </component>
+    <component type="Container" name="Container3" cloudDestinationProperty="Container3" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="CheckBox" name="organized" cloudDestinationProperty="organized" text="Organized" >
+      </component>
+      <component type="CheckBox" name="skilled" cloudDestinationProperty="skilled" text="Skilled" >
+      </component>
+      <component type="CheckBox" name="communicative" cloudDestinationProperty="communicative" text="Communicative" >
+      </component>
+    </component>
+    <component type="Label" name="Label5" cloudDestinationProperty="Label5" text="Comments" >
+      <layoutConstraint row="-1" column="-1" height="-1" width="-1" align="-1" spanHorizontal="1" valign="0" spanVertical="1" />
+    </component>
+    <component type="TextField" name="comments" cloudBoundProperty="text" cloudDestinationProperty="comments" text="" rows="5" >
+    </component>
+  </component>
+  <component type="Container" name="Container1" cloudDestinationProperty="Container1" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="4" flowLayoutValign="4" >
+    <component type="Button" name="submit" cloudDestinationProperty="submit" text="Submit" >
+    </component>
+    <component type="Button" name="cancel" cloudDestinationProperty="cancel" text="Cancel" >
+    </component>
+  </component>
+</component>
