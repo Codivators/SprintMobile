@@ -5,15 +5,13 @@
  */
 package com.mycompany.myapp.gui;
 
-import com.codename1.notifications.LocalNotification;
 import com.codename1.ui.Button;
-import com.codename1.ui.Container;
-import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import java.io.IOException;
+
 
 
 
@@ -24,67 +22,51 @@ import java.io.IOException;
 public class HomeForm extends Form {
 
     Form current;
-
+    Resources res;
     /*Garder traçe de la Form en cours pour la passer en paramètres 
     aux interfaces suivantes pour pouvoir y revenir plus tard en utilisant
     la méthode showBack*/
-    Resources res;
-    public HomeForm() throws IOException {
-        
-
-      
-        
+    
+    public HomeForm() {
         current = this; //Récupération de l'interface(Form) en cours
-        setTitle("Stack Activity Blog");
+        
         setLayout(BoxLayout.y());
 
-   
+        add(new Label("Choose an option"));
+        Button btnAddTask = new Button("Add activity");
+        Button btnListTasks = new Button("List activities");
+        Button btnAddCat = new Button("Add Category");
+        Button btnListCat = new Button("List categories");
+                Button btnListAct = new Button("List activities for client");
 
 
-        Button btnAddTask = new Button("Add Article");
-        Button btnListTasks = new Button("List Articles");
-        Button btnListTasksUser = new Button("Your Articles");
 
-        
-                Button btnWeb = new Button("Web comp");
-                
-                Button btnShowArticle = new Button("Show Article");
-
-        btnAddTask.addActionListener(e -> {
-            try {
-                new WebBrowser(current);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        });
+        btnAddTask.addActionListener(e -> new AddActiviteForm(current).show());
         btnListTasks.addActionListener(e -> {
+         
             try {
-                new ListTasksForm(current, res);
+                new ListActivitiesForm(current);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+           
+        });
+        btnAddCat.addActionListener(e -> new AddCategorieActForm(current).show());
+        btnListCat.addActionListener(e -> {
+            try {
+                new ListCatagoriesActForm(current);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         });
-        int id = 16;
-        btnListTasksUser.addActionListener(e -> {
+        btnListAct.addActionListener(e -> {
             try {
-                new ListArticlesUser(current, res, id);
+                new ListActivitiesClientForm(current);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         });
-        
-        
-        
-        
-        
-             //   btnWeb.addActionListener(e -> new WebBrowser());
-               // btnShowArticle.addActionListener(e -> new ShowArticle());
-
-        addAll(new Label(" "), new Label(" "), new Label(" "),
-                new Label(" "), new Label(" "), new Label(" "),
-                new Label(" "), 
-                new Container(new BoxLayout(BoxLayout.X_AXIS)).add(new Label("                               Stack Activity Blog")) , new Label(" "),
-                btnAddTask, btnListTasks, btnListTasksUser);
+        addAll(btnAddTask, btnListTasks,btnAddCat,btnListCat,btnListAct);
 
     }
 
