@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" layout="LayeredLayout" layeredLayoutPreferredWidthMM="0.0" layeredLayoutPreferredHeightMM="0.0"  autolayout="true" title="blockk" scrollableX="true" scrollableY="true" name="blockk">
+  <component type="Label" styles="transparency:46; opacity:255; bgImage:blockkk.png;" preferredSize="20.110077mm 22.015242mm" name="Label">
+    <layoutConstraint insets="17.797886% auto auto 42.01571%" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+  </component>
+  <component type="Label" text="SORRY , You are BLOCKED" preferredSize="61.600338mm 19.263336mm" name="Label_1">
+    <layoutConstraint insets="22.438612mm 23.896105% auto auto" referenceComponents="0 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+  </component>
+</component>
