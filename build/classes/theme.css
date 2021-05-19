@@ -1,0 +1,7 @@
+@media cn1 {
+    HomeGuideForm{
+        cn1-derive: Form;
+        background-image: url(../assets/background.jpg);
+    }  
+}
+
